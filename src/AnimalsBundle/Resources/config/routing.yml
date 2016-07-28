@@ -1,0 +1,3 @@
+animals_homepage:
+    path:     /
+    defaults: { _controller: AnimalsBundle:Default:index }
