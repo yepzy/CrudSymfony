@@ -7,19 +7,21 @@
 		<thead>
 			<tr><th>Name</th><th>Description</th><th>&nbsp;</th></tr>
 		</thead>
+		<tr><td><a class="btn btn-default" title="Add" href="{{urlAdd}}"><span class="glyphicon glyphicon-plus"></span></a></td></tr>
 		<tbody>
 			{% for item in animalsTab %}
 			<tr style="background-color:{{item.colorBG}}">
 				<td>{{item.name}}</td>
 				<td>{{item.type}}</td>
 				<td>
-					<span class="btn btn-warning" title="Edit"><span class="glyphicon glyphicon-pencil"></span></span>
+					<a class="btn btn-warning" title="Edit" href="{{item.urlEdit}}"><span class="glyphicon glyphicon-pencil"></span></a>
 					&nbsp;
-					<span class="btn btn-danger" title="Delete"><span class="glyphicon glyphicon-trash"></span></span>
+					<a class="btn btn-danger" title="Delete" href="{{item.urlDelete}}"><span class="glyphicon glyphicon-trash"></span></a>
 				</td>
 			</tr>
 			{% endfor %}
 		</tbody>
+		<tr><td><a class="btn btn-default" title="Add" href="{{urlAdd}}"><span class="glyphicon glyphicon-plus"></span></a></td></tr>
 	</table>
 </div>
 {% endblock %}
