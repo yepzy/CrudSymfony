@@ -5,12 +5,12 @@ namespace AnimalsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Animal
+ * Oiseau
  *
- * @ORM\Table(name="animal")
- * @ORM\Entity(repositoryClass="AnimalsBundle\Repository\AnimalRepository")
+ * @ORM\Table(name="mammifere")
+ * @ORM\Entity(repositoryClass="AnimalsBundle\Repository\MammifereRepository")
  */
-abstract class Animal
+class Mammifere extends Animal
 {
     /**
      * @var int
@@ -34,6 +34,13 @@ abstract class Animal
      * @ORM\Column(name="type", type="integer")
      */
     private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fur", type="string", length=255)
+     */
+    private $fur;
 
     /**
      * Get id
@@ -89,5 +96,33 @@ abstract class Animal
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set fur
+     *
+     * @param string $fur
+     * @return Animal
+     */
+    public function setfur($fur)
+    {
+        $this->fur = $fur;
+
+        return $this;
+    }
+
+    /**
+     * Get fur
+     *
+     * @return string 
+     */
+    public function getfur()
+    {
+        return $this->fur;
+    }
+
+    // Voir pour ajout auto ou non du e
+    public function growl(){
+        return 'je suis un(e) '.getName().'!';
     }
 }

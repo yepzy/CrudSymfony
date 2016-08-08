@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="animal")
  * @ORM\Entity(repositoryClass="AnimalsBundle\Repository\AnimalRepository")
  */
-class Animal
+abstract class Animal
 {
     /**
      * @var int
@@ -34,14 +34,6 @@ class Animal
      * @ORM\Column(name="type", type="integer")
      */
     private $type;
-
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="attributs", type="json_array")
-     */
-    private $attributs;
-
 
     /**
      * Get id
@@ -97,28 +89,5 @@ class Animal
     public function getType()
     {
         return $this->type;
-    }
-
-    /**
-     * Set attributs
-     *
-     * @param array $attributs
-     * @return Animal
-     */
-    public function setAttributs($attributs)
-    {
-        $this->attributs = $attributs;
-
-        return $this;
-    }
-
-    /**
-     * Get attributs
-     *
-     * @return array 
-     */
-    public function getAttributs()
-    {
-        return $this->attributs;
     }
 }

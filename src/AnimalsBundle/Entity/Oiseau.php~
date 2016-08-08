@@ -5,12 +5,12 @@ namespace AnimalsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Animal
+ * Oiseau
  *
- * @ORM\Table(name="animal")
- * @ORM\Entity(repositoryClass="AnimalsBundle\Repository\AnimalRepository")
+ * @ORM\Table(name="oiseau")
+ * @ORM\Entity(repositoryClass="AnimalsBundle\Repository\OiseauRepository")
  */
-abstract class Animal
+class Oiseau extends Animal
 {
     /**
      * @var int
@@ -34,6 +34,13 @@ abstract class Animal
      * @ORM\Column(name="type", type="integer")
      */
     private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="feather", type="string", length=255)
+     */
+    private $feather;
 
     /**
      * Get id
@@ -89,5 +96,33 @@ abstract class Animal
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set feather
+     *
+     * @param string $feather
+     * @return Animal
+     */
+    public function setfeather($feather)
+    {
+        $this->feather = $feather;
+
+        return $this;
+    }
+
+    /**
+     * Get feather
+     *
+     * @return string 
+     */
+    public function getfeather()
+    {
+        return $this->feather;
+    }
+
+    // Voir pour ajout auto ou non du e
+    public function tweet(){
+        return 'je suis un(e) '.getName().'!';
     }
 }

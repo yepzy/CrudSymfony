@@ -5,12 +5,12 @@ namespace AnimalsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Animal
+ * Reptile
  *
- * @ORM\Table(name="animal")
- * @ORM\Entity(repositoryClass="AnimalsBundle\Repository\AnimalRepository")
+ * @ORM\Table(name="reptile")
+ * @ORM\Entity(repositoryClass="AnimalsBundle\Repository\ReptileRepository")
  */
-abstract class Animal
+class Reptile extends Animal
 {
     /**
      * @var int
@@ -34,6 +34,13 @@ abstract class Animal
      * @ORM\Column(name="type", type="integer")
      */
     private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="scale", type="string", length=255)
+     */
+    private $scale;
 
     /**
      * Get id
@@ -89,5 +96,34 @@ abstract class Animal
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set scale
+     *
+     * @param string $scale
+     * @return Animal
+     */
+    public function setscale($scale)
+    {
+        $this->scale = $scale;
+
+        return $this;
+    }
+
+    /**
+     * Get scale
+     *
+     * @return string 
+     */
+    public function getscale()
+    {
+        return $this->scale;
+    }
+
+
+    // Voir pour ajout auto ou non du e
+    public function hiss(){
+        return 'je suis un(e) '.getName().'!';
     }
 }
