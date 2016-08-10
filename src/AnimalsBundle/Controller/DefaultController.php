@@ -48,6 +48,7 @@ class DefaultController extends Controller
 					'urlAdd' =>$this->get('router')->generate('animals_add')
 					)
 				);
+			$this->getFlashBag()->clear();
 		}
 
 
@@ -57,7 +58,7 @@ class DefaultController extends Controller
 	*/
 	public function addAction()
 	{
-		return $this->render('AnimalsBundle:Default:form.html.twig');
+		return $this->render('AnimalsBundle:Default:form.html.twig',array('type' => 0));
 	}
 
 	/**
@@ -67,6 +68,9 @@ class DefaultController extends Controller
 	public function editAction($id)
 	{
 
+		// query get animal informations
+
+		return $this->render('AnimalsBundle:Default:form.html.twig',array('type' => 1,'data' => $animal));
 	}
 
 	/**
@@ -75,6 +79,11 @@ class DefaultController extends Controller
 	*/
 	public function deleteAction($id)
 	{
+		$this->addFlash(
+            'deleteMessage',
+            ('Animals './*$animal->getName().*/' has been deleted!')
+        );
 
+        return $this->redirectToRoute('animals_homepage');
 	}
 }

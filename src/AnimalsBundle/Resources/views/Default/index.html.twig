@@ -3,6 +3,11 @@
 {% block body %}
 <div class="row">
 	<h1 class="page-header">Welcome to AniList</h1>
+	{% for flash_message in app.session.flashBag.get('deleteMessage') %}
+	    <div class="alert alert-warning">
+	        {{ flash_message }}
+	    </div>
+	{% endfor %}
 	<table class="table table-striped">
 		<thead>
 			<tr><th>Name</th><th>Description</th><th>&nbsp;</th></tr>
