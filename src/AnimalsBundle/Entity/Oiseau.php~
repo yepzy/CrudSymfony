@@ -10,9 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="oiseau")
  * @ORM\Entity(repositoryClass="AnimalsBundle\Repository\OiseauRepository")
  */
-class Oiseau extends Animal
+class Oiseau
 {
-    /**
+     /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -20,29 +20,7 @@ class Oiseau extends Animal
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="type", type="integer")
-     */
-    private $type;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="feather", type="string", length=255)
-     */
-    private $feather;
-
-    /**
+/**
      * Get id
      *
      * @return integer 
@@ -51,52 +29,13 @@ class Oiseau extends Animal
     {
         return $this->id;
     }
-
+    
     /**
-     * Set name
+     * @var string
      *
-     * @param string $name
-     * @return Animal
+     * @ORM\Column(name="feather", type="string", length=255)
      */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set type
-     *
-     * @param integer $type
-     * @return Animal
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return integer 
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
+    private $feather;
 
     /**
      * Set feather
@@ -104,7 +43,7 @@ class Oiseau extends Animal
      * @param string $feather
      * @return Animal
      */
-    public function setfeather($feather)
+    public function setFeather($feather)
     {
         $this->feather = $feather;
 
@@ -116,7 +55,7 @@ class Oiseau extends Animal
      *
      * @return string 
      */
-    public function getfeather()
+    public function getFeather()
     {
         return $this->feather;
     }

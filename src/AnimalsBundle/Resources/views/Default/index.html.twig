@@ -14,10 +14,15 @@
 		</thead>
 		<tr><td><a class="btn btn-default" title="Add" href="{{urlAdd}}"><span class="glyphicon glyphicon-plus"></span></a></td></tr>
 		<tbody>
+			{% if animalsTab is empty %}
+			<tr>
+				<td colspan="3"><center><span class="glyphicon glyphicon-alert"></span>&nbsp;No Animals</center></td>
+			</tr>
+			{% endif %}
 			{% for item in animalsTab %}
 			<tr style="background-color:{{item.colorBG}}">
 				<td>{{item.name}}</td>
-				<td>{{item.type}}</td>
+				<td>{{item.description}}</td>
 				<td>
 					<a class="btn btn-warning" title="Edit" href="{{item.urlEdit}}"><span class="glyphicon glyphicon-pencil"></span></a>
 					&nbsp;

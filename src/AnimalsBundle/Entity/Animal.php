@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="animal")
  * @ORM\Entity(repositoryClass="AnimalsBundle\Repository\AnimalRepository")
  */
-abstract class Animal
+class Animal
 {
     /**
      * @var int
@@ -89,5 +89,74 @@ abstract class Animal
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+   * @ORM\OneToOne(targetEntity="AnimalsBundle\Entity\Reptile", cascade={"persist"})
+   */
+    private $reptile;
+
+    /**
+   * @ORM\OneToOne(targetEntity="AnimalsBundle\Entity\Oiseau", cascade={"persist"})
+   */
+    private $oiseau;
+
+    /**
+   * @ORM\OneToOne(targetEntity="AnimalsBundle\Entity\Mammifere", cascade={"persist"})
+   */
+    private $mammifere;
+
+    /**
+     * Set reptile
+     */
+    public function setReptile($reptile)
+    {
+        $this->reptile = $reptile;
+
+        return $this;
+    }
+
+    /**
+     * Get reptile
+     */
+    public function getReptile()
+    {
+        return $this->reptile;
+    }
+
+    /**
+     * Set oiseau
+     */
+    public function setOiseau($oiseau)
+    {
+        $this->oiseau = $oiseau;
+
+        return $this;
+    }
+
+    /**
+     * Get oiseau
+     */
+    public function getOiseau()
+    {
+        return $this->oiseau;
+    }
+
+    /**
+     * Set mammifere
+     */
+    public function setMammifere($mammifere)
+    {
+        $this->mammifere = $mammifere;
+
+        return $this;
+    }
+
+    /**
+     * Get mammifere
+     */
+    public function getMammifere()
+    {
+        return $this->mammifere;
     }
 }

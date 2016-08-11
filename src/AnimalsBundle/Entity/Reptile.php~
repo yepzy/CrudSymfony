@@ -10,9 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="reptile")
  * @ORM\Entity(repositoryClass="AnimalsBundle\Repository\ReptileRepository")
  */
-class Reptile extends Animal
+class Reptile
 {
-    /**
+     /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -20,29 +20,7 @@ class Reptile extends Animal
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="type", type="integer")
-     */
-    private $type;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="scale", type="string", length=255)
-     */
-    private $scale;
-
-    /**
+/**
      * Get id
      *
      * @return integer 
@@ -53,50 +31,11 @@ class Reptile extends Animal
     }
 
     /**
-     * Set name
+     * @var string
      *
-     * @param string $name
-     * @return Animal
+     * @ORM\Column(name="scale", type="string", length=255)
      */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set type
-     *
-     * @param integer $type
-     * @return Animal
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return integer 
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
+    private $scale;
 
     /**
      * Set scale
@@ -104,7 +43,7 @@ class Reptile extends Animal
      * @param string $scale
      * @return Animal
      */
-    public function setscale($scale)
+    public function setScale($scale)
     {
         $this->scale = $scale;
 
@@ -116,7 +55,7 @@ class Reptile extends Animal
      *
      * @return string 
      */
-    public function getscale()
+    public function getScale()
     {
         return $this->scale;
     }

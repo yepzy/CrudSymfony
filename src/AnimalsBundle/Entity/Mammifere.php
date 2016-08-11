@@ -10,9 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="mammifere")
  * @ORM\Entity(repositoryClass="AnimalsBundle\Repository\MammifereRepository")
  */
-class Mammifere extends Animal
+class Mammifere
 {
-    /**
+     /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -20,28 +20,6 @@ class Mammifere extends Animal
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="type", type="integer")
-     */
-    private $type;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="fur", type="string", length=255)
-     */
-    private $fur;
-
     /**
      * Get id
      *
@@ -51,60 +29,20 @@ class Mammifere extends Animal
     {
         return $this->id;
     }
-
+    
     /**
-     * Set name
+     * @var string
      *
-     * @param string $name
-     * @return Animal
+     * @ORM\Column(name="fur", type="string", length=255)
      */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set type
-     *
-     * @param integer $type
-     * @return Animal
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return integer 
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
+    private $fur;
     /**
      * Set fur
      *
      * @param string $fur
      * @return Animal
      */
-    public function setfur($fur)
+    public function setFur($fur)
     {
         $this->fur = $fur;
 
@@ -116,7 +54,7 @@ class Mammifere extends Animal
      *
      * @return string 
      */
-    public function getfur()
+    public function getFur()
     {
         return $this->fur;
     }
