@@ -2,9 +2,13 @@
 
 {% block body %}
 <div class="row">
-	<h1 class="page-header">{{type}} {{complement}}</h1>
-	<form>
-	</form>
+	<h1 class="page-header"> You will add an {{ type}}</h1>
+	
+<div class="well">
+  {{ form(form) }}
+</div>
+<a href="{{ url }}" class="btn btn-warning">Change Type Animal</a> &nbsp;
+<a href="{{ urlHome }}" class="btn btn-warning">Go Home</a>
 </div>
 
 {% endblock %}

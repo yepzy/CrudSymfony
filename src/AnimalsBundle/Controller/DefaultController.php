@@ -4,6 +4,13 @@ namespace AnimalsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use AnimalsBundle\Entity\Animal;
+use Symfony\Component\HttpFoundation\Request;
+
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 class DefaultController extends Controller
 {
 	/**
@@ -17,34 +24,6 @@ class DefaultController extends Controller
 		$mammifereBG = '#5c6bc0';
 
 		$animalsTab = array();
-		// Exemple pour remplir l'affichage -> à modifier
-		// ColorBG faire une fonction qui associera la couleur en fonction du type d'animal
-		// $animalsTab = array(
-		// 	array(
-		// 		'id' => 5,
-		// 		'name' => 'Crocodile',
-		// 		'type' => 'je suis un reptile et mes écailles sont verte',
-		// 		'colorBG' => '#26a69a',
-		// 		'urlEdit' => $this->get('router')->generate('animals_edit',array('id' => 5)),
-		// 		'urlDelete' => $this->get('router')->generate('animals_delete',array('id' => 5))
-		// 		),
-		// 	array(
-		// 		'id' => 14,
-		// 		'name' => 'Baleine',
-		// 		'type' => 'je suis un mammifère et ma fourrure est bleu',
-		// 		'colorBG' => '#5c6bc0',
-		// 		'urlEdit' => $this->get('router')->generate('animals_edit',array('id' => 14)),
-		// 		'urlDelete' => $this->get('router')->generate('animals_delete',array('id' => 14))
-		// 		),
-		// 	array(
-		// 		'id' => 22,
-		// 		'name' => 'Perroquet',
-		// 		'type' => 'je suis un oiseau et mon plumage est rouge',
-		// 		'colorBG' => '#e57373',
-		// 		'urlEdit' => $this->get('router')->generate('animals_edit',array('id' => 22)),
-		// 		'urlDelete' => $this->get('router')->generate('animals_delete',array('id' => 22))
-		// 		)
-		// 	);
 
 		$repository = $this->getDoctrine()->getManager()->getRepository('AnimalsBundle:Animal');
 		$listAnimals = $repository->findAll();
@@ -75,17 +54,17 @@ class DefaultController extends Controller
 				array_push($animalsTab, $arrayData);
 
 			}
-}
+		}
 
-return $this->render(
-	'AnimalsBundle:Default:index.html.twig',
-	array(
-		'animalsTab' => $animalsTab,
-		'urlAdd' =>$this->get('router')->generate('animals_add')
-		)
-	);
-$this->getFlashBag()->clear();
-}
+		return $this->render(
+			'AnimalsBundle:Default:index.html.twig',
+			array(
+				'animalsTab' => $animalsTab,
+				'urlAdd' =>$this->get('router')->generate('animals_add')
+				)
+			);
+		$this->getFlashBag()->clear();
+	}
 
 
 	/**
@@ -94,7 +73,45 @@ $this->getFlashBag()->clear();
 	*/
 	public function addAction()
 	{
-		return $this->render('AnimalsBundle:Default:form.html.twig',array('type' => 0));
+		$request = Request::createFromGlobals();
+
+		// retrieve GET variables
+		$animalType = $request->query->get('typeAnimal');
+
+		if(isset($animalType))
+		{
+			$animal = new Animal();
+		    // On crée le FormBuilder grâce au service form factory
+			$formBuilder = $this->get('form.factory')->createBuilder('form');
+
+			$formBuilder->add('name', TextType::class,array('label' => 'Name '));
+			switch ($animalType) {
+				case 0:
+				$formBuilder->add('scale', TextType::class,array('label' => 'Scales color '));
+				$animalType = 'Reptile';
+				break;
+				case 1:
+				$formBuilder->add('featherData', TextType::class,array('label' => 'Feathers color '));
+				$animalType = 'Bird';
+				break;
+				case 2:
+				$formBuilder->add('furData', TextType::class,array('label' => 'Fur color '));	
+				$animalType = 'Mammal';				
+				break;
+			}
+
+			$formBuilder->add('Add', SubmitType::class, array('label' => 'Add'));
+			$form = $formBuilder->getForm();
+
+			return $this->render('AnimalsBundle:Default:form.html.twig',array(
+				'type' => $animalType,
+				'url' => $this->get('router')->generate('animals_add'),
+				'urlHome' => $this->get('router')->generate('animals_homepage'),
+				'form' => $form->createView(),
+				));
+		}	else {
+			return $this->render('AnimalsBundle:Default:choose.html.twig',array('url' => $this->get('router')->generate('animals_add')));
+		}
 	}
 
 	/**
