@@ -61,7 +61,7 @@ class Oiseau
     }
 
     // Voir pour ajout auto ou non du e
-    public function tweet(){
-        return 'je suis un(e) '.getName().'!';
+    public function tweet($name){
+        return 'I am a(n) '.$name.' and my feathers are '.$this->feather.'!';
     }
 }

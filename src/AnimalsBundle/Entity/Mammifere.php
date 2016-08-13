@@ -60,7 +60,7 @@ class Mammifere
     }
 
     // Voir pour ajout auto ou non du e
-    public function growl(){
-        return 'je suis un(e) '.getName().'!';
+    public function growl($name){
+        return 'I am a(n) '.$name.' and my fur is '.$this->fur.'!';
     }
 }

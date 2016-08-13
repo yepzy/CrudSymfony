@@ -3,8 +3,8 @@
 {% block body %}
 <div class="row">
 	<h1 class="page-header">Welcome to AniList</h1>
-	{% for flash_message in app.session.flashBag.get('deleteMessage') %}
-	    <div class="alert alert-warning">
+	{% for flash_message in app.session.flashBag.get('successMessage') %}
+	    <div class="alert alert-success">
 	        {{ flash_message }}
 	    </div>
 	{% endfor %}

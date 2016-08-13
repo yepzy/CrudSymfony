@@ -4,6 +4,7 @@ namespace AnimalsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Reptile
  *
@@ -62,7 +63,7 @@ class Reptile
 
 
     // Voir pour ajout auto ou non du e
-    public function hiss(){
-        return 'je suis un(e) '.getName().'!';
+    public function hiss($name){
+        return 'I am a(n) '.$name.' and my scale is '.$this->scale.'!';
     }
 }
