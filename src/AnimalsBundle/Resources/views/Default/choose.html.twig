@@ -1,0 +1,13 @@
+{% extends 'AnimalsBundle::base.html.twig' %}
+
+{% block body %}
+<div class="row">
+	<div class="well">
+		Choose type of animal that you want to create : 
+		<a href="{{ url }}?typeAnimal=0" class="btn btn-success">Reptile</a> &nbsp;
+		<a href="{{ url }}?typeAnimal=1" class="btn btn-success">Bird</a> &nbsp;
+		<a href="{{ url }}?typeAnimal=2" class="btn btn-success">Mammal</a> 
+	</div>
+</div>
+
+{% endblock %}

@@ -2,7 +2,8 @@
 
 namespace AnimalsBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping as ORM;    
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Animal
@@ -25,6 +26,11 @@ class Animal
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/[^a-zA-Z^\s]/",
+     *     match=false,
+     *     message="Your name cannot contain a number"
+     * )
      */
     private $name;
 
@@ -34,14 +40,6 @@ class Animal
      * @ORM\Column(name="type", type="integer")
      */
     private $type;
-
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="attributs", type="json_array")
-     */
-    private $attributs;
-
 
     /**
      * Get id
@@ -100,25 +98,71 @@ class Animal
     }
 
     /**
-     * Set attributs
-     *
-     * @param array $attributs
-     * @return Animal
+   * @ORM\OneToOne(targetEntity="AnimalsBundle\Entity\Reptile", cascade={"persist"})
+   */
+    private $reptile;
+
+    /**
+   * @ORM\OneToOne(targetEntity="AnimalsBundle\Entity\Oiseau", cascade={"persist"})
+   */
+    private $oiseau;
+
+    /**
+   * @ORM\OneToOne(targetEntity="AnimalsBundle\Entity\Mammifere", cascade={"persist"})
+   */
+    private $mammifere;
+
+    /**
+     * Set reptile
      */
-    public function setAttributs($attributs)
+    public function setReptile($reptile)
     {
-        $this->attributs = $attributs;
+        $this->reptile = $reptile;
 
         return $this;
     }
 
     /**
-     * Get attributs
-     *
-     * @return array 
+     * Get reptile
      */
-    public function getAttributs()
+    public function getReptile()
     {
-        return $this->attributs;
+        return $this->reptile;
+    }
+
+    /**
+     * Set oiseau
+     */
+    public function setOiseau($oiseau)
+    {
+        $this->oiseau = $oiseau;
+
+        return $this;
+    }
+
+    /**
+     * Get oiseau
+     */
+    public function getOiseau()
+    {
+        return $this->oiseau;
+    }
+
+    /**
+     * Set mammifere
+     */
+    public function setMammifere($mammifere)
+    {
+        $this->mammifere = $mammifere;
+
+        return $this;
+    }
+
+    /**
+     * Get mammifere
+     */
+    public function getMammifere()
+    {
+        return $this->mammifere;
     }
 }
