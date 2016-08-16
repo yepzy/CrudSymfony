@@ -5,11 +5,27 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <div class="row">
+<<<<<<< HEAD
 	<h1 class="page-header">Welcome to AniList &nbsp; <span class="btn btn-info" data-toggle="modal" data-target="#infoModal"><span class="glyphicon glyphicon-info-sign"></span></span></h1>
 	{% for flash_message in app.session.flashBag.get('successMessage') %}
 	<div class="alert alert-success">
 		{{ flash_message }}
 	</div>
+=======
+<<<<<<< HEAD
+	<h1 class="page-header">Welcome to AniList &nbsp; <span class="btn btn-info" data-toggle="modal" data-target="#infoModal"><span class="glyphicon glyphicon-info-sign"></span></span></h1>
+	{% for flash_message in app.session.flashBag.get('successMessage') %}
+	<div class="alert alert-success">
+		{{ flash_message }}
+	</div>
+=======
+	<h1 class="page-header">Welcome to AniList</h1>
+	{% for flash_message in app.session.flashBag.get('successMessage') %}
+	    <div class="alert alert-success">
+	        {{ flash_message }}
+	    </div>
+>>>>>>> 355bf4e995d78c6fb46dae8c470bad131f14a8cc
+>>>>>>> a5b12d48dc05092d134ba387ccb20b5a8fd321ae
 	{% endfor %}
 	<table class="table table-striped">
 		<thead>
@@ -24,8 +40,18 @@
 			{% endif %}
 			{% for item in animalsTab %}
 			<tr style="background-color:{{item.colorBG}}">
+<<<<<<< HEAD
 				<td><h4>{{item.name}}</h4></td>
 				<td><h4>{{item.description}}</h4></td>
+=======
+<<<<<<< HEAD
+				<td><h4>{{item.name}}</h4></td>
+				<td><h4>{{item.description}}</h4></td>
+=======
+				<td>{{item.name}}</td>
+				<td>{{item.description}}</td>
+>>>>>>> 355bf4e995d78c6fb46dae8c470bad131f14a8cc
+>>>>>>> a5b12d48dc05092d134ba387ccb20b5a8fd321ae
 				<td>
 					<a class="btn btn-warning" title="Edit" href="{{item.urlEdit}}"><span class="glyphicon glyphicon-pencil"></span></a>
 					&nbsp;
