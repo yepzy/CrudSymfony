@@ -1,12 +1,15 @@
 {% extends 'AnimalsBundle::base.html.twig' %}
 
 {% block body %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <div class="row">
-	<h1 class="page-header">Welcome to AniList</h1>
+	<h1 class="page-header">Welcome to AniList &nbsp; <span class="btn btn-info" data-toggle="modal" data-target="#infoModal"><span class="glyphicon glyphicon-info-sign"></span></span></h1>
 	{% for flash_message in app.session.flashBag.get('successMessage') %}
-	    <div class="alert alert-success">
-	        {{ flash_message }}
-	    </div>
+	<div class="alert alert-success">
+		{{ flash_message }}
+	</div>
 	{% endfor %}
 	<table class="table table-striped">
 		<thead>
@@ -21,8 +24,8 @@
 			{% endif %}
 			{% for item in animalsTab %}
 			<tr style="background-color:{{item.colorBG}}">
-				<td>{{item.name}}</td>
-				<td>{{item.description}}</td>
+				<td><h4>{{item.name}}</h4></td>
+				<td><h4>{{item.description}}</h4></td>
 				<td>
 					<a class="btn btn-warning" title="Edit" href="{{item.urlEdit}}"><span class="glyphicon glyphicon-pencil"></span></a>
 					&nbsp;
@@ -33,5 +36,30 @@
 		</tbody>
 		<tr><td><a class="btn btn-default" title="Add" href="{{urlAdd}}"><span class="glyphicon glyphicon-plus"></span></a></td></tr>
 	</table>
+</div>
+
+<div id="infoModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Informations</h4>
+			</div>
+			<div class="modal-body">
+				<h3>Legend of colors</h3>
+				<table class="table">
+					<tr>
+						<td>Reptile</td><td style="background-color:#26a69a;">&nbsp;&nbsp;&nbsp;</td>
+					</tr>
+					<tr>
+						<td>Bird</td><td style="background-color:#e57373;">&nbsp;&nbsp;&nbsp;</td>
+					</tr>
+					<tr>
+						<td>Mammal</td><td style="background-color:#5c6bc0;">&nbsp;&nbsp;&nbsp;</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
 {% endblock %}

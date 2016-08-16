@@ -3,6 +3,7 @@
 namespace AnimalsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -35,6 +36,11 @@ class Reptile
      * @var string
      *
      * @ORM\Column(name="scale", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/[^a-zA-Z^\s]/",
+     *     match=false,
+     *     message="Your scale color cannot contain a number"
+     * )
      */
     private $scale;
 

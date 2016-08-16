@@ -2,7 +2,8 @@
 
 namespace AnimalsBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping as ORM;    
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Animal
@@ -25,6 +26,11 @@ class Animal
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/[^a-zA-Z^\s]/",
+     *     match=false,
+     *     message="Your name cannot contain a number"
+     * )
      */
     private $name;
 

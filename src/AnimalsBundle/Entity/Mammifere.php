@@ -3,6 +3,7 @@
 namespace AnimalsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Oiseau
@@ -34,6 +35,11 @@ class Mammifere
      * @var string
      *
      * @ORM\Column(name="fur", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/[^a-zA-Z^\s]/",
+     *     match=false,
+     *     message="Your fur color cannot contain a number"
+     * )
      */
     private $fur;
     /**
